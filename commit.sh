@@ -5,7 +5,7 @@ if [[ -z "$GIT_USERNAME" || -z "$GIT_TOKEN" ]]; then
   exit 1
 fi
 
-REPO_URL="https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/AtheistATT/space"
+REPO_URL="https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/AtheistATT/fs-py"
 
 git add .
 
