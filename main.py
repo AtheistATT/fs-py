@@ -120,4 +120,3 @@ sort_data()
 get_total()
 save_data()
 
-pdb.set_trace()
