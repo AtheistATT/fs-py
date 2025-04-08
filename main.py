@@ -2,10 +2,11 @@ from openpyxl import *
 import os
 import datetime
 import pdb
+from icecream import ic
 
 data = {}
 total = []
-
+final = []
 
 def convert_to_delta(s):
     minutes, seconds = s.split(':')
@@ -70,6 +71,20 @@ def get_total():
         if total[i][1] == total[i - 1][1]:
             total[i][0] = total[i - 1][0]
 
+def set_final():
+
+    for key in data.keys():
+        row = []
+        row.append(key)
+
+        for r in data[key]:
+            row += r
+        final.append(row)
+    
+
+
+
+
 def save_data():
     wb = Workbook()
 
@@ -86,6 +101,14 @@ def save_data():
     for row in total:
         wb["TOTAL"].append(row)
 
+    set_final()
+
+    wb.create_sheet("Финишный протокол")
+
+    for row in final:
+        wb["Финишный протокол"].append(row)
+
+
     wb.save("output.xlsx")
     wb.close()
 
@@ -96,3 +119,5 @@ load_data()
 sort_data()
 get_total()
 save_data()
+
+pdb.set_trace()
